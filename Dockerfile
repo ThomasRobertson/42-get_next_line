@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 LABEL description="Valgrind"
-ENV TZ=Europe/Kiev
+ENV TZ=Europe/Paris
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get update
 RUN apt-get install build-essential valgrind zsh curl -y
