@@ -6,13 +6,13 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:01:35 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/11 23:24:26 by troberts         ###   ########.fr       */
+/*   Updated: 2022/05/12 01:20:46 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	get_len_of_line(char *buffer)
+static size_t	get_len_of_line(char *buffer)
 {
 	size_t	len;
 
@@ -24,7 +24,7 @@ size_t	get_len_of_line(char *buffer)
 	return (len);
 }
 
-ssize_t	get_read(int fd, char **buffer)
+static ssize_t	get_read(int fd, char **buffer)
 {
 	size_t		i;
 	ssize_t		len_read;
@@ -48,7 +48,7 @@ ssize_t	get_read(int fd, char **buffer)
 	return (len_read);
 }
 
-char	*get_line(char **buffer, int fd, int *nl_found)
+static char	*get_line(char **buffer, int fd, int *nl_found)
 {
 	ssize_t	len_read;
 	char	*line;
