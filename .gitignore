@@ -1,0 +1,31 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#                                                       :+:      :+:    :+:    #
+#    .gitignore                                       +:+ +:+         +:+      #
+#                                                   +#+  +:+       +#+         #
+#    By: troberts <troberts@student.42.fr>        +#+#+#+#+#+   +#+            #
+#                                                      #+#    #+#              #
+#                                                     ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+# Default rules
+*.out
+*.swp
+*.gch
+*.o
+*.code-workspace
+.DS_Store
+.vscode
+.devcontainer
+
+# Specific files
+gnl
+libft.a
+libft.h
+
+# Specific folders
+old
+gnlTester
+other-test

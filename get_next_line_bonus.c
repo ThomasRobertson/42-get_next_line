@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:01:35 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/11 23:39:46 by troberts         ###   ########.fr       */
+/*   Updated: 2022/05/11 23:24:26 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	get_len_of_line(char *buffer)
 {
@@ -78,7 +78,7 @@ char	*get_line(char **buffer, int fd, int *nl_found)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[FD_MAX];
 	char		*line_old;
 	int			nl_found;
 	char		*line;
@@ -87,12 +87,12 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	nl_found = 0;
-	line = get_line(&buffer, fd, &nl_found);
+	line = get_line(&buffer[fd], fd, &nl_found);
 	if (line == NULL)
 		return (NULL);
 	while (nl_found == 0)
 	{
-		new_line = get_line(&buffer, fd, &nl_found);
+		new_line = get_line(&buffer[fd], fd, &nl_found);
 		if (new_line == NULL)
 			return (line);
 		line_old = line;

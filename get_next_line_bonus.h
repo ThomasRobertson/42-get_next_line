@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:02:30 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/11 23:24:41 by troberts         ###   ########.fr       */
+/*   Updated: 2022/05/11 20:14:02 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 20
 # endif
+
+# define FD_MAX 10240
 
 typedef struct s_fd
 {
