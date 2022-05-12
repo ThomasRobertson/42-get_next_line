@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:02:30 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/12 01:17:55 by troberts         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:07:30 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <unistd.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 20
+#  define BUFFER_SIZE 8192
 # endif
 
 # define FD_MAX 10240
