@@ -19,7 +19,7 @@ echo "compiling done."
 
 if [ $# -eq 0 ]
   then
-	time ./gnl big_line_no_nl
+	time ./gnl text.txt
     diff <(./gnl text.txt) text.txt
 fi
 
