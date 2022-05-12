@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:01:35 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/12 01:20:18 by troberts         ###   ########.fr       */
+/*   Updated: 2022/05/12 11:02:25 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,25 +26,20 @@ static size_t	get_len_of_line(char *buffer)
 
 static ssize_t	get_read(int fd, char **buffer)
 {
-	size_t		i;
-	ssize_t		len_read;
+	ssize_t	len_read;
 
-	i = 0;
 	free(*buffer);
 	*buffer = malloc(sizeof(**buffer) * (BUFFER_SIZE + 1));
 	if (*buffer == NULL)
 		return (0);
-	while (i < (BUFFER_SIZE + 1))
-	{
-		(*buffer)[i] = 0;
-		i++;
-	}
 	len_read = read(fd, *buffer, BUFFER_SIZE);
 	if (len_read <= 0)
 	{
 		free(*buffer);
 		*buffer = NULL;
 	}
+	else
+		(*buffer)[len_read] = 0;
 	return (len_read);
 }
 
