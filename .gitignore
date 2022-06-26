@@ -27,8 +27,16 @@ libft.h
 1.txt
 2.txt
 3.txt
+main-test.c
+testing.sh
+text.txt
 
 # Specific folders
 old
 gnlTester
 other-test
+42test-gnl-station-2022
+Get_Next_Line_Tester
+Fork
+gnl-test
+backup
