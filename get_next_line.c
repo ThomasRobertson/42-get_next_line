@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:01:35 by troberts          #+#    #+#             */
-/*   Updated: 2022/05/12 11:02:25 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/26 03:08:24 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,56 +24,49 @@ static size_t	get_len_of_line(char *buffer)
 	return (len);
 }
 
-static ssize_t	get_read(int fd, char **buffer)
+static ssize_t	get_read(int fd, char *buffer)
 {
 	ssize_t	len_read;
 
-	free(*buffer);
-	*buffer = malloc(sizeof(**buffer) * (BUFFER_SIZE + 1));
-	if (*buffer == NULL)
-		return (0);
-	len_read = read(fd, *buffer, BUFFER_SIZE);
-	if (len_read <= 0)
-	{
-		free(*buffer);
-		*buffer = NULL;
-	}
+	len_read = read(fd, buffer, BUFFER_SIZE);
+	if (len_read > 0)
+		buffer[len_read] = 0;
 	else
-		(*buffer)[len_read] = 0;
+		buffer[0] = 0;
 	return (len_read);
 }
 
-static char	*get_line(char **buffer, int fd, int *nl_found)
+static char	*get_line(char *buffer, int fd, int *nl_found)
 {
 	ssize_t	len_read;
 	char	*line;
 	size_t	len_line;
 	char	*buff_tmp;
 
-	if (*buffer == NULL || ft_strlen(*buffer) == 0)
+	if (ft_strlen(buffer) == 0)
 	{
 		len_read = get_read(fd, buffer);
 		if (len_read <= 0)
 			return (NULL);
 	}
-	len_line = get_len_of_line(*buffer);
-	if ((*buffer)[len_line - 1] == '\n')
+	len_line = get_len_of_line(buffer);
+	if (buffer[len_line - 1] == '\n')
 		*nl_found = 1;
 	line = malloc(len_line + 1);
 	if (line == NULL)
 		return (NULL);
-	ft_strlcpy(line, *buffer, len_line + 1);
-	buff_tmp = ft_strdup((*buffer) + len_line);
+	ft_strlcpy(line, buffer, len_line + 1);
+	buff_tmp = ft_strdup((buffer) + len_line);
 	if (buff_tmp == NULL)
 		return (NULL);
-	free(*buffer);
-	*buffer = buff_tmp;
+	ft_strlcpy(buffer, buff_tmp, ft_strlen(buff_tmp) + 1);
+	free(buff_tmp);
 	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	buffer[BUFFER_SIZE + 1];
 	char		*line_old;
 	int			nl_found;
 	char		*line;
@@ -82,12 +75,12 @@ char	*get_next_line(int fd)
 	if (fd < 0)
 		return (NULL);
 	nl_found = 0;
-	line = get_line(&buffer, fd, &nl_found);
+	line = get_line(buffer, fd, &nl_found);
 	if (line == NULL)
 		return (NULL);
 	while (nl_found == 0)
 	{
-		new_line = get_line(&buffer, fd, &nl_found);
+		new_line = get_line(buffer, fd, &nl_found);
 		if (new_line == NULL)
 			return (line);
 		line_old = line;
