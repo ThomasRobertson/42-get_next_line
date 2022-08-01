@@ -9,11 +9,14 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Compiling using GCC
-      run: make re
+      run: cc -c *.c
       env:
         CC: gcc
 
+    - name: Cleaning
+      run: rm *.o
+
     - name: Compiling using Clang
-      run: make re
+      run: cc -c *.c
       env:
         CC: clang
