@@ -6,7 +6,7 @@
 /*   By: troberts <troberts@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/23 21:02:30 by troberts          #+#    #+#             */
-/*   Updated: 2022/06/26 03:06:12 by troberts         ###   ########.fr       */
+/*   Updated: 2022/06/26 22:34:02 by troberts         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@
 */
 char	*get_next_line(int fd);
 
-void	*ft_memmove(void *dest, const void *src, size_t n);
 size_t	ft_strlen(const char *s);
 size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 char	*ft_strdup(const char *s);
