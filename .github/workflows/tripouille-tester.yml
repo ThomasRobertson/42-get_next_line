@@ -15,4 +15,4 @@ jobs:
           git reset --hard 2e28a6ce9454666c6670645a60a1b9b4404d0c65
 
     - name: Running tester
-      run: make a
+      run: cd gnlTester && make a
