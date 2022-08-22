@@ -9,9 +9,10 @@ jobs:
     - uses: actions/checkout@v3
 
     - name: Setting up the folder
-      run: git clone -n https://github.com/Tripouille/gnlTester.git
-      run: cd gnlTester
-      run: git checkout 2e28a6ce9454666c6670645a60a1b9b4404d0c65
+      run: |
+          git clone -n https://github.com/Tripouille/gnlTester.git
+          cd gnlTester
+          git checkout 2e28a6ce9454666c6670645a60a1b9b4404d0c65
 
     - name: Running tester
       run: make a
