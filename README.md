@@ -33,7 +33,11 @@
   <a href="https://github.com/ThomasRobertson/42-get_next_line/actions/workflows/norminette-action.yml">
     <img src="https://github.com/ThomasRobertson/42-get_next_line/workflows/Norm Check/badge.svg"
          alt="Norminette Action">
-  </a> 
+  </a>
+  <a href="https://github.com/ThomasRobertson/42-get_next_line/actions/workflows/norminette-action.yml">
+    <img src="https://github.com/ThomasRobertson/42-get_next_line/workflows/Tripouille Tester/badge.svg"
+         alt="Norminette Action">
+  </a>
 </p>
 
 <p align="center">
